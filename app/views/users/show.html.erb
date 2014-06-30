@@ -16,8 +16,8 @@
 </p>
 <h3>Your Facebook Friends </h3>
 <ul>
-<% @my_freinds.each do |x| %>
-  <li><%= link_to x.last, user_get_frineds_path(x.last), method: :post %></li>
+<% @fb_friends.each do |x| %>
+  <li><%= link_to x.last, user_get_friends_path(x.first,@user.id), method: :post %></li>
 <% end %>
 </ul>
 <%= link_to 'Edit', edit_user_path(@user) %> |

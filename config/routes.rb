@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'users#index'
   resources :users do
-    post :get_frineds
+    post 'get_friends/:id' => "users#get_friends", :as => "get_friends"
   end
   match "/auth/:provider/callback" => "users#create", :via => 'get'
   # The priority is based upon order of creation: first created -> highest priority.

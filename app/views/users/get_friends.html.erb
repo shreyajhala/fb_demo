@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @user.uid %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<h3>Your Mutual Friends </h3>
+<ul>
+<% @mu_friends.each do |mu_friend| %>
+  <li><%= mu_friend["name"] %></li>
+<% end %>
+</ul>
+<%= link_to 'Back', :back %>

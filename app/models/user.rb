@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
     user
   end
 
+  def get_mutual_friends(user_id)
+    graph = Koala::Facebook::API.new(self.token)
+    friend_id = user_id
+    graph.get_connections("me", "mutualfriends/#{friend_id}")
+  end
+
 end

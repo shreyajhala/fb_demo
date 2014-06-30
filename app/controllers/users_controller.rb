@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :get_friends]
 
   # GET /users
   # GET /users.json
@@ -66,10 +66,7 @@ class UsersController < ApplicationController
   end
 
   def get_friends
-    @friend = FbGraph::User.me(User.first.token).friends
-    @fb_friends = FbGraph::User.me(User.first.token).friends
-    my_freinds = Array.new
-    @fb_friends.each do |x| h << [x.raw_attributes.fetch(:id), x.raw_attributes.fetch(:name)] end
+    @mu_friends = @user.get_mutual_friends(params[:user_id])
   end
 
   private
